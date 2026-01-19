@@ -1,24 +1,16 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
+import { TestBed } from '@angular/core/testing';
 
-export interface MovieResponse {
-  Title: string;
-  Poster: string;
-  Year?: string;
-}
+import { Movie } from './movie';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class MovieService {
-  private apiKey = environment.apiKey;
-  private apiUrl = environment.apiUrl;
+describe('Movie', () => {
+  let service: Movie;
 
-  constructor(private http: HttpClient) {}
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(Movie);
+  });
 
-  getMovie(title: string): Observable<MovieResponse> {
-    return this.http.get<MovieResponse>(`${this.apiUrl}?apikey=${this.apiKey}&t=${title}`);
-  }
-}
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});

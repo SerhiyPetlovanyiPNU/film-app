@@ -1,8 +1,8 @@
-<div class="card">
+<a class="card" href="#">
   @if (posterUrl && posterUrl !== 'N/A') {
     <img [src]="posterUrl" [alt]="title" />
   } @else {
-    <div class="no-image">Нет картинки</div>
+    <div class="card_no-image">Not have image</div>
   }
   <h3>{{ title }}</h3>
-</div>
+</a>

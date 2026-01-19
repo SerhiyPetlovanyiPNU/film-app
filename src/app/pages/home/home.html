@@ -1,1 +1,15 @@
-<p>home works!</p>
+<section class="home-content">
+  <h1>For you:</h1>
+
+  @if (movieData) {
+    <div class="home-content__cards">
+      <app-movie-card [title]="movieData.Title" [posterUrl]="movieData.Poster"> </app-movie-card>
+      <app-movie-card [title]="movieData.Title" [posterUrl]="movieData.Poster"> </app-movie-card>
+      <app-movie-card [title]="movieData.Title" [posterUrl]="movieData.Poster"> </app-movie-card>
+      <app-movie-card [title]="movieData.Title" [posterUrl]="movieData.Poster"> </app-movie-card>
+      <app-movie-card [title]="movieData.Title" [posterUrl]="movieData.Poster"> </app-movie-card>
+    </div>
+  } @else {
+    <p>Load...</p>
+  }
+</section>
