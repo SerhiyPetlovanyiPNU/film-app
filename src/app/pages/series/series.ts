@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './series.html',
   styleUrl: './series.scss',
 })
-export class Series {
-
-}
+export class SeriesPage {}

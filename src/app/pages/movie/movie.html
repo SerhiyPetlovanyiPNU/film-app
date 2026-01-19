@@ -1,1 +1,25 @@
-<p>movie works!</p>
+<div class="search">
+  <div class="search__header">
+    <h1>Search {{ type }}</h1>
+    <input
+      type="text"
+      placeholder="Enter title for search..."
+      (input)="onSearch($event)"
+      class="search__input"
+    />
+  </div>
+
+  @if (isLoading) {
+    <div class="search__loader">Search...</div>
+  }
+
+  <div class="search__results">
+    @for (item of results; track item.imdbID) {
+      <app-movie-card [title]="item.Title" [posterUrl]="item.Poster"> </app-movie-card>
+    } @empty {
+      @if (!isLoading) {
+        <p class="search__empty-msg">Enter name {{ type }} to start search (more 3 symbols)</p>
+      }
+    }
+  </div>
+</div>

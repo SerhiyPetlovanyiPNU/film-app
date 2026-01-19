@@ -8,6 +8,13 @@ export interface MovieResponse {
   Poster: string;
   Year?: string;
   Response?: string;
+  imdbID?: string;
+}
+
+export interface SearchResult {
+  Search: MovieResponse[];
+  totalResults: string;
+  Response: string;
 }
 
 @Injectable({
@@ -22,6 +29,12 @@ export class Movie {
   getMovie(title: string, type: string): Observable<MovieResponse> {
     return this.http.get<MovieResponse>(
       `${this.apiUrl}?apikey=${this.apiKey}&t=${title}&type=${type}`,
+    );
+  }
+
+  searchMovies(query: string, type: string): Observable<SearchResult> {
+    return this.http.get<SearchResult>(
+      `${this.apiUrl}?apikey=${this.apiKey}&s=${query}&type=${type}`,
     );
   }
 }

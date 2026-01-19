@@ -1,0 +1,38 @@
+.search {
+  & h1 {
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  &__input {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    transition: border-color 0.3s;
+
+    &:focus {
+      outline: none;
+      border-color: #e74c3c;
+    }
+  }
+
+  &__results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+  }
+
+  &__empty-msg {
+    grid-column: 1 / -1;
+    color: #888;
+    font-style: italic;
+  }
+}
