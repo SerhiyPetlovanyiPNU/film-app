@@ -1,14 +1,23 @@
 <section class="home-content">
-  <h1>For you:</h1>
+  <h1>Recommendations for you:</h1>
 
-  @if (movieData) {
+  <div class="home-content__filter">
+    <label for="type-select">Select type: </label>
+    <select id="type-select" (change)="onTypeChange($event)" [disabled]="isLoading">
+      <option value="movie">Movie</option>
+      <option value="series">Series</option>
+      <option value="episode">Episode</option>
+    </select>
+  </div>
+
+  @if (movies.length === 5) {
     <div class="home-content__cards">
-      <app-movie-card [title]="movieData.Title" [posterUrl]="movieData.Poster"> </app-movie-card>
-      <app-movie-card [title]="movieData.Title" [posterUrl]="movieData.Poster"> </app-movie-card>
-      <app-movie-card [title]="movieData.Title" [posterUrl]="movieData.Poster"> </app-movie-card>
-      <app-movie-card [title]="movieData.Title" [posterUrl]="movieData.Poster"> </app-movie-card>
-      <app-movie-card [title]="movieData.Title" [posterUrl]="movieData.Poster"> </app-movie-card>
+      @for (movie of movies; track movie.Title) {
+        <app-movie-card [title]="movie.Title" [posterUrl]="movie.Poster"> </app-movie-card>
+      }
     </div>
+  } @else if (errorMessage) {
+    <div class="home-content_error">{{ errorMessage }}</div>
   } @else {
     <p>Load...</p>
   }

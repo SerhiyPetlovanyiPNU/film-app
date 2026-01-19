@@ -7,6 +7,7 @@ export interface MovieResponse {
   Title: string;
   Poster: string;
   Year?: string;
+  Response?: string;
 }
 
 @Injectable({
@@ -18,7 +19,9 @@ export class Movie {
 
   constructor(private http: HttpClient) {}
 
-  getMovie(title: string): Observable<MovieResponse> {
-    return this.http.get<MovieResponse>(`${this.apiUrl}?apikey=${this.apiKey}&t=${title}`);
+  getMovie(title: string, type: string): Observable<MovieResponse> {
+    return this.http.get<MovieResponse>(
+      `${this.apiUrl}?apikey=${this.apiKey}&t=${title}&type=${type}`,
+    );
   }
 }

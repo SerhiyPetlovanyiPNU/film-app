@@ -1,5 +1,7 @@
 .card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
@@ -11,6 +13,7 @@
   transition: 0.5s;
   text-decoration: none;
   margin: 15px;
+  height: 350px;
 
   img {
     max-width: 100%;
