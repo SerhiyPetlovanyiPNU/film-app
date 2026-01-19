@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Subject, debounceTime, distinctUntilChanged, switchMap, of } from 'rxjs';
 import { Movie, MovieResponse } from '../../services/movie';
 import { MovieCard } from '../../components/movie-card/movie-card';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie-search',
@@ -12,7 +13,7 @@ import { MovieCard } from '../../components/movie-card/movie-card';
   styleUrl: './movie.scss',
 })
 export class MoviePage implements OnInit {
-  @Input() type: 'movie' | 'series' | 'episode' = 'movie';
+  @Input() type: 'movie' | 'series' = 'movie';
 
   results: MovieResponse[] = [];
   isLoading = false;
@@ -22,9 +23,17 @@ export class MoviePage implements OnInit {
   constructor(
     private movieService: Movie,
     private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit() {
+    this.route.data.subscribe((data) => {
+      this.type = data['type'] || 'movie';
+
+      this.results = [];
+      this.isLoading = false;
+    });
+
     this.searchSubject
       .pipe(
         debounceTime(500),
