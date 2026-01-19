@@ -25,6 +25,7 @@ export interface MovieDetailResponse extends MovieResponse {
   Released: string;
   Runtime: string;
   imdbRating: string;
+  Awards: string;
 }
 
 @Injectable({

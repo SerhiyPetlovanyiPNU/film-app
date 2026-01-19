@@ -1,24 +1,56 @@
 <section class="home-content">
-  <h1>Recommendations for you:</h1>
-
-  <div class="home-content__filter">
-    <label for="type-select">Select type: </label>
-    <select id="type-select" (change)="onTypeChange($event)" [disabled]="isLoading">
-      <option value="movie">Movie</option>
-      <option value="series">Series</option>
-    </select>
+  <div class="home-content__hero">
+    <h1>
+      Unlimited Movies, <br />
+      TV Shows, and more. 🍿
+    </h1>
+    <p>Dive into the world of cinema. Discover new stories or find your old favorites.</p>
   </div>
 
-  @if (movies.length === 5) {
-    <div class="home-content__cards">
-      @for (movie of movies; track movie.Title) {
-        <app-movie-card [title]="movie.Title" [posterUrl]="movie.Poster" [id]="movie.imdbID">
-        </app-movie-card>
-      }
+  <hr class="divider" />
+
+  <div class="home-content__recommendations">
+    <h2>🔥 Recommendations for you:</h2>
+
+    <div class="home-content__filter">
+      <label for="type-select">I want to watch: </label>
+      <select id="type-select" (change)="onTypeChange($event)" [disabled]="isLoading">
+        <option value="movie">Movies 🎬</option>
+        <option value="series">Series 📺</option>
+      </select>
     </div>
-  } @else if (errorMessage) {
-    <div class="home-content_error">{{ errorMessage }}</div>
-  } @else {
-    <p>Load...</p>
-  }
+
+    @if (movies.length > 0 && !isLoading) {
+      <div class="home-content__cards">
+        @for (movie of movies; track movie.Title) {
+          <app-movie-card [title]="movie.Title" [posterUrl]="movie.Poster" [id]="movie.imdbID">
+          </app-movie-card>
+        }
+      </div>
+    } @else if (errorMessage) {
+      <div class="home-content__error">😕 {{ errorMessage }}</div>
+    } @else {
+      <div class="home-content__loading">⏳ Picking best titles for you...</div>
+    }
+  </div>
+
+  <hr class="divider" />
+
+  <div class="home-content__features">
+    <div class="feature-card">
+      <span class="emoji">⚡</span>
+      <h3>Fast Search</h3>
+      <p>Instant access to thousands of titles.</p>
+    </div>
+    <div class="feature-card">
+      <span class="emoji">⭐</span>
+      <h3>Top Ratings</h3>
+      <p>Based on IMDb scores and popularity.</p>
+    </div>
+    <div class="feature-card">
+      <span class="emoji">🧠</span>
+      <h3>Smart Choice</h3>
+      <p>Random picks so you don't have to choose.</p>
+    </div>
+  </div>
 </section>

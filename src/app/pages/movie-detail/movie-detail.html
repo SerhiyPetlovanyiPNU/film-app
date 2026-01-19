@@ -1,27 +1,43 @@
 @if (isLoading) {
-  <div class="loader">Load...</div>
+  <div class="loader">🍿 Loading details...</div>
 } @else if (movie) {
   <div class="detail">
     <div class="detail__poster">
-      <img [src]="movie.Poster" [alt]="movie.Title" />
+      @if (movie.Poster && movie.Poster !== 'N/A') {
+        <img [src]="movie.Poster" [alt]="movie.Title" />
+      } @else {
+        <div class="no-image">🎬 No Poster</div>
+      }
     </div>
 
     <div class="detail__info">
-      <h1>{{ movie.Title }} ({{ movie.Year }})</h1>
+      <h1>
+        {{ movie.Title }} <span class="year">({{ movie.Year }})</span>
+      </h1>
+
       <div class="detail__meta">
         <span class="detail__rating">⭐ {{ movie.imdbRating }}</span>
-        <span>{{ movie.Runtime }}</span>
-        <span>{{ movie.Genre }}</span>
+        <span class="detail__tag">⏱ {{ movie.Runtime }}</span>
+        <span class="detail__tag">🎞 {{ movie.Genre }}</span>
       </div>
 
-      <p class="detail__plot"><strong>Plot:</strong> {{ movie.Plot }}</p>
+      <hr class="divider" />
+
+      <p class="detail__plot">
+        <strong>📖 Plot:</strong> <br />
+        {{ movie.Plot }}
+      </p>
 
       <div class="detail__cast">
-        <p><strong>Director:</strong> {{ movie.Director }}</p>
-        <p><strong>Actors:</strong> {{ movie.Actors }}</p>
+        <p><strong>🎬 Director:</strong> {{ movie.Director }}</p>
+        <p><strong>🎭 Actors:</strong> {{ movie.Actors }}</p>
+
+        @if (movie.Awards && movie.Awards !== 'N/A') {
+          <p><strong>🏆 Awards:</strong> {{ movie.Awards }}</p>
+        }
       </div>
 
-      <button (click)="goBack()" class="detail__back-btn">Back</button>
+      <button (click)="goBack()" class="detail__back-btn">⬅ Back to list</button>
     </div>
   </div>
 }

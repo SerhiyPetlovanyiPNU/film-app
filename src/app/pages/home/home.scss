@@ -1,27 +1,115 @@
 .home-content {
-  & > h1 {
-    margin-top: 80px;
-    margin-bottom: 80px;
+  padding: 0 20px;
+  max-width: 1380px;
+  width: 100%;
+  margin: 0 auto;
+
+  .divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #e74c3c, transparent);
+    margin: 60px 0;
+    opacity: 0.5;
+  }
+
+  &__hero {
     text-align: center;
+    margin-top: 60px;
+
+    h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  &__recommendations {
+    text-align: center;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
   }
 
   &__cards {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
   }
 
   &__filter {
-    margin-bottom: 25px;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
 
     & select {
       margin-left: 10px;
-      padding: 5px 15px;
-      border: none;
+      padding: 8px 20px;
+      border: 1px solid #e74c3c;
       outline: none;
-      border-bottom: 1px solid;
-      color: #e74c3c;
-      background-color: #121920;
-      border-radius: 5px;
+      color: #fff;
+      background-color: #1a252f;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #e74c3c;
+      }
+    }
+  }
+
+  &__loading,
+  &__error {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 40px;
+  }
+
+  &__error {
+    color: #e74c3c;
+  }
+
+  &__features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    text-align: center;
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 15px;
+      width: 250px;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-10px);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .emoji {
+        font-size: 3rem;
+        display: block;
+        margin-bottom: 15px;
+      }
+
+      h3 {
+        color: #e74c3c;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 0.9rem;
+      }
     }
   }
 }
