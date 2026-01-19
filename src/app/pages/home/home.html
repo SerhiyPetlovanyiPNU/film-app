@@ -13,7 +13,8 @@
   @if (movies.length === 5) {
     <div class="home-content__cards">
       @for (movie of movies; track movie.Title) {
-        <app-movie-card [title]="movie.Title" [posterUrl]="movie.Poster"> </app-movie-card>
+        <app-movie-card [title]="movie.Title" [posterUrl]="movie.Poster" [id]="movie.imdbID">
+        </app-movie-card>
       }
     </div>
   } @else if (errorMessage) {

@@ -1,4 +1,4 @@
-<a class="card" href="#">
+<a class="card" [routerLink]="['/details', id]">
   @if (posterUrl && posterUrl !== 'N/A') {
     <img [src]="posterUrl" [alt]="title" />
   } @else {

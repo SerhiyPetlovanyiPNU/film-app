@@ -8,13 +8,23 @@ export interface MovieResponse {
   Poster: string;
   Year?: string;
   Response?: string;
-  imdbID?: string;
+  imdbID: string;
 }
 
 export interface SearchResult {
   Search: MovieResponse[];
   totalResults: string;
   Response: string;
+}
+
+export interface MovieDetailResponse extends MovieResponse {
+  Plot: string;
+  Actors: string;
+  Director: string;
+  Genre: string;
+  Released: string;
+  Runtime: string;
+  imdbRating: string;
 }
 
 @Injectable({
@@ -35,6 +45,12 @@ export class Movie {
   searchMovies(query: string, type: string): Observable<SearchResult> {
     return this.http.get<SearchResult>(
       `${this.apiUrl}?apikey=${this.apiKey}&s=${query}&type=${type}`,
+    );
+  }
+
+  getMovieDetails(id: string): Observable<MovieDetailResponse> {
+    return this.http.get<MovieDetailResponse>(
+      `${this.apiUrl}?apikey=${this.apiKey}&i=${id}&plot=full`,
     );
   }
 }

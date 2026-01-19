@@ -1,0 +1,27 @@
+@if (isLoading) {
+  <div class="loader">Load...</div>
+} @else if (movie) {
+  <div class="detail">
+    <div class="detail__poster">
+      <img [src]="movie.Poster" [alt]="movie.Title" />
+    </div>
+
+    <div class="detail__info">
+      <h1>{{ movie.Title }} ({{ movie.Year }})</h1>
+      <div class="detail__meta">
+        <span class="detail__rating">⭐ {{ movie.imdbRating }}</span>
+        <span>{{ movie.Runtime }}</span>
+        <span>{{ movie.Genre }}</span>
+      </div>
+
+      <p class="detail__plot"><strong>Plot:</strong> {{ movie.Plot }}</p>
+
+      <div class="detail__cast">
+        <p><strong>Director:</strong> {{ movie.Director }}</p>
+        <p><strong>Actors:</strong> {{ movie.Actors }}</p>
+      </div>
+
+      <button (click)="goBack()" class="detail__back-btn">Back</button>
+    </div>
+  </div>
+}

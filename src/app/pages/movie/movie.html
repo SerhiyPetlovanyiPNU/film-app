@@ -15,7 +15,8 @@
 
   <div class="search__results">
     @for (item of results; track item.imdbID) {
-      <app-movie-card [title]="item.Title" [posterUrl]="item.Poster"> </app-movie-card>
+      <app-movie-card [title]="item.Title" [posterUrl]="item.Poster" [id]="item.imdbID">
+      </app-movie-card>
     } @empty {
       @if (!isLoading) {
         <p class="search__empty-msg">Enter name {{ type }} to start search (more 3 symbols)</p>
